@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 // connects socket with server
-const {green} = require('chalk');
+const {green, red} = require('chalk');
 
 module.exports = io => {
   console.log('hie');
@@ -12,7 +12,7 @@ module.exports = io => {
     });
 
     socket.on('disconnect', () => {
-      console.log(green(`user ${socket.id} disconnected`));
+      console.log(red(`user ${socket.id} disconnected`));
     });
   });
 };
