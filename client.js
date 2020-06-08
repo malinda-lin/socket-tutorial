@@ -1,17 +1,21 @@
-// initiates socket on client side
+/* initiates socket on client side */
 const socket = io();
 
-const exampleEvent = () => {
-  // socket.emit triggers the 'example action' on the server side
-  socket.emit('example action', 'any data type');
+/* add event listeners here */
+const b = document.getElementById('button');
+
+const exampleEvent = e => {
+  e.preventDefault();
+  // socket.emit triggers the 'example' socket on the server side
+  socket.emit('example', 'pass any data type here');
 };
 
-exampleEvent();
+b.addEventListener('click', exampleEvent);
 
-// Add your socket listeners here!
-
-socket.on('someEventName', data => {
-  // do something with data or anything else you'd like!
+/* Add your socket listeners here! */
+socket.on('clientSocketName', data => {
+  // any code here will execute when this socket is triggered
+  alert(data);
 });
 
 socket.on('logged off', msg => {
